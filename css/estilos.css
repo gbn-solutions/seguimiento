@@ -1,0 +1,505 @@
+:root {
+  --fondo: #f4f6f8;
+  --superficie: #ffffff;
+  --texto: #16202b;
+  --tenue: #5b6875;
+  --borde: #d9dfe5;
+  --marino: #14283a;
+  --marino-texto: #ffffff;
+  --acento: #1f6f8b;
+  --acento-texto: #ffffff;
+  --bien-fondo: #dff3e4;
+  --bien-texto: #1b6b34;
+  --falta-fondo: #fde4df;
+  --falta-texto: #a02c1b;
+  --curso-fondo: #fff1cf;
+  --curso-texto: #7a5600;
+  --neutra-fondo: #e8edf2;
+  --neutra-texto: #44505c;
+  --fila-activa: #eef5f8;
+  --radio: 8px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0f161d;
+    --superficie: #18222c;
+    --texto: #e6ebf0;
+    --tenue: #9aa7b4;
+    --borde: #2c3945;
+    --marino: #0b1c2a;
+    --acento: #4fa8c6;
+    --acento-texto: #06202a;
+    --bien-fondo: #17402a;
+    --bien-texto: #9fe0b4;
+    --falta-fondo: #4a1f18;
+    --falta-texto: #ffb4a6;
+    --curso-fondo: #4a3a0d;
+    --curso-texto: #ffd978;
+    --neutra-fondo: #26323d;
+    --neutra-texto: #b9c4cf;
+    --fila-activa: #1f2c38;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.25rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tenue);
+  margin-bottom: 0.75rem;
+}
+
+a {
+  color: var(--acento);
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+main[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+section {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.cabecera {
+  background: var(--marino);
+  color: var(--marino-texto);
+  padding: 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cabecera-titulo p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.cabecera-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.pestanas {
+  display: flex;
+  gap: 4px;
+  padding: 0 16px;
+  background: var(--marino);
+  overflow-x: auto;
+}
+
+.pestana {
+  border: 0;
+  background: transparent;
+  color: var(--marino-texto);
+  opacity: 0.75;
+  padding: 10px 16px;
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--radio) var(--radio) 0 0;
+}
+
+.pestana.activa {
+  background: var(--fondo);
+  color: var(--texto);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.boton,
+select,
+input,
+textarea {
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 7px 10px;
+}
+
+.boton {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.boton-principal {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: var(--acento-texto);
+  font-weight: 600;
+}
+
+.boton-peligro {
+  color: var(--falta-texto);
+  border-color: var(--falta-texto);
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 2px;
+}
+
+.panel,
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px;
+  min-width: 0;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta {
+  display: grid;
+  gap: 4px;
+}
+
+.tarjeta-titulo {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tenue);
+}
+
+.tarjeta strong,
+.destacado strong {
+  font-size: 1.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tarjeta small,
+.tenue {
+  color: var(--tenue);
+  font-size: 0.85rem;
+}
+
+.dos-columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.destacado {
+  display: grid;
+  gap: 4px;
+}
+
+.negativo strong,
+tr.negativo td {
+  color: var(--falta-texto);
+}
+
+.barra {
+  width: 100%;
+  min-width: 80px;
+  height: 8px;
+  appearance: none;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--neutra-fondo);
+  accent-color: var(--acento);
+}
+
+.barra::-webkit-progress-bar {
+  background: var(--neutra-fondo);
+}
+
+.barra::-webkit-progress-value {
+  background: var(--acento);
+}
+
+.barra::-moz-progress-bar {
+  background: var(--acento);
+}
+
+.encabezado-seccion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+.panel .tabla-contenedor {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabla th,
+.tabla td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.tabla th {
+  font-size: 0.78rem;
+  color: var(--tenue);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--superficie);
+}
+
+.tabla td.ancha {
+  white-space: normal;
+  min-width: 220px;
+  max-width: 420px;
+}
+
+.tabla tbody tr:not(.vacia):not(.fija) {
+  cursor: pointer;
+}
+
+.tabla tbody tr:not(.vacia):not(.fija):hover {
+  background: var(--fila-activa);
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.vacia td {
+  color: var(--tenue);
+  text-align: center;
+  padding: 28px;
+}
+
+.numerica {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabla-resumen th,
+.tabla-resumen td {
+  padding: 6px 0;
+  text-align: left;
+  font-weight: 400;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla-resumen td {
+  padding-left: 12px;
+}
+
+.tabla-resumen tr:last-child th,
+.tabla-resumen tr:last-child td {
+  border-bottom: 0;
+}
+
+.tabla-resumen tr.fuerte th,
+.tabla-resumen tr.fuerte td {
+  font-weight: 700;
+}
+
+.marca {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.marca-bien {
+  background: var(--bien-fondo);
+  color: var(--bien-texto);
+}
+
+.marca-falta {
+  background: var(--falta-fondo);
+  color: var(--falta-texto);
+}
+
+.marca-curso {
+  background: var(--curso-fondo);
+  color: var(--curso-texto);
+}
+
+.marca-neutra {
+  background: var(--neutra-fondo);
+  color: var(--neutra-texto);
+}
+
+.aviso {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.aviso-error,
+.aviso-falta {
+  background: var(--falta-fondo);
+  color: var(--falta-texto);
+}
+
+.aviso-falta {
+  margin-bottom: 10px;
+}
+
+.dialogo {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto);
+  padding: 0;
+  width: min(720px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+}
+
+.dialogo::backdrop {
+  background: rgb(0 0 0 / 55%);
+}
+
+.formulario {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.campo {
+  display: grid;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--tenue);
+}
+
+.campo-ancho {
+  grid-column: 1 / -1;
+}
+
+.campo-casilla {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto);
+}
+
+.campo input:not([type='checkbox']),
+.campo select,
+.campo textarea,
+.formulario > div > textarea {
+  width: 100%;
+}
+
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.espacio {
+  flex: 1;
+}
+
+.socios {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fila-socio {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+}
+
+.fila-socio input {
+  min-width: 0;
+}
+
+.formulario h3 {
+  margin: 16px 0 8px;
+}
+
+.conexion {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.pasos {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 4px;
+}

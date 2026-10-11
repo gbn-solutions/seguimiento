@@ -1,0 +1,9 @@
+{
+  "name": "seguimiento",
+  "private": true,
+  "type": "module",
+  "description": "Seguimiento y costeo de proyectos. Sitio estático; los datos viven en un repo privado.",
+  "scripts": {
+    "test": "node --test --experimental-test-coverage test/"
+  }
+}
